@@ -5,6 +5,8 @@ $avatar-size: {{ .Param "style.avatarSize" | default "90px;" }};
 // Colors
 $black: {{ .Param "style.colorBlack" | default "#222222" }};
 $red: {{ .Param "style.colorRed" | default "#dc3545" }};
+$dark: {{ .Param "style.colorDark" | default "#1d1e20" }};
+$white: {{ .Param "style.colorWhite" | default "#dbdbdb" }};
 
 // Font
 $font-family: {{ .Param "style.fontFamily" | default "Inconsolata" }};
@@ -36,6 +38,17 @@ $y-medium: 1.0rem;
         text-decoration: underline;
     }
 }
+%link-white {
+    color: $white;
+    text-decoration: none;
+    & * {
+        color: $white;
+    }
+    &:hover {
+        color: $white;
+        text-decoration: underline;
+    }
+}
 %table-cell {
     border: 1px solid #cccccc;
     padding: 6px 12px;
@@ -44,7 +57,7 @@ $y-medium: 1.0rem;
 
 // Style
 * {
-    color: $black;
+    color: $white;
     font-family: $font-family;
     line-height: 1.2;
 }
@@ -52,7 +65,7 @@ $y-medium: 1.0rem;
     max-width: $max-width;
 }
 .navbar-brand {
-    @extend %link-dark;
+    @extend %link-white;
     font-size: 2rem;
 }
 .nav-link {
@@ -69,6 +82,7 @@ $y-medium: 1.0rem;
         font-size: medium;
         font-weight: bold;
         margin: $y-medium 0 $y-small 0;
+        color: $white;
     }
     @for $i from 1 through 4 {
         h#{$i} {
@@ -122,12 +136,13 @@ $y-medium: 1.0rem;
         & th {
             @extend %table-cell;
             font-weight: bold;
+            background-color: #412E2E;
         }
         & td {
             @extend %table-cell;
         }
         & tr:nth-child(2n) {
-            background-color: #f8f8f8;
+            background-color: #272822;
         }
     }
     blockquote {
@@ -137,8 +152,8 @@ $y-medium: 1.0rem;
         padding: 8px 8px;
     }
     code {
-        color: $black;
-        background-color: #f8f8f8;
+        color: $white;
+        background-color: #412E2E;
         border: 1px solid #cccccc;
         border-radius: 10%;
         padding: 0px 4px;
@@ -155,6 +170,9 @@ $y-medium: 1.0rem;
 }
 #footer {
     a {
-        @extend %link-dark;
+        @extend %link-white;
     }
+}
+body {
+    background-color: $dark;
 }
